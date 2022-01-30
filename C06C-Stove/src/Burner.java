@@ -1,6 +1,6 @@
 
 public class Burner {
-	private enum Temperature {BLAZING, HOT, WARM, COLD};
+	public enum Temperature {BLAZING, HOT, WARM, COLD};
 	private Temperature myTemperature;
 	private Setting mySetting;
 	private int timer;
@@ -19,6 +19,7 @@ public class Burner {
 
 
 	public void plusButton() {
+		// Increase temperature unless temperature is max
 		switch (mySetting.toString()) {
 			case "---":
 				mySetting = Setting.LOW;
@@ -30,11 +31,11 @@ public class Burner {
 				mySetting = Setting.HIGH;
 				break;
 		}
-		
 	}
 
 
 	public void minusButton() {
+		// Decreasing temperature unless setting is off
 		switch (mySetting.toString()) {
 			case "+++":
 				mySetting = Setting.MEDIUM;
@@ -46,17 +47,34 @@ public class Burner {
 				mySetting = Setting.OFF;
 				break;
 		}
-		
 	}
 
 
 	public void updateTemperature() {
-		// TODO Auto-generated method stub
+		// Increasing timer to ensure burner changes after time duration
+		timer++;
+		// Increasing temperature only if time duration has passed
 		
 	}
 	
 	public void display() {
-		
+		// Displaying the current setting of the burner
+		System.out.print(mySetting);
+		// Providing the reaction to that temperature
+			switch (myTemperature) {
+			case BLAZING:
+				System.out.println(".....VERY HOT! DON'T TOUCH");
+				break;
+			case HOT:
+				System.out.println(".....CAREFUL");
+				break;
+			case WARM:
+				System.out.println(".....warm");
+				break;
+			case COLD:
+				System.out.println(".....cooool");
+				break;
+		}
 	}
 	
 	
